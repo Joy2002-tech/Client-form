@@ -56,19 +56,13 @@
     align-items: center;
     gap: 14px;
   }
-  .logo-icon {
+  .logo-area img {
     width: 52px;
     height: 52px;
-    background: linear-gradient(135deg, var(--accent), var(--gold));
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: white;
-    font-weight: 700;
-    flex-shrink: 0;
+    object-fit: contain;
+    background: white;
+    padding: 4px;
   }
   .logo-text h1 {
     font-family: 'Playfair Display', serif;
@@ -118,7 +112,6 @@
   .progress-bar {
     display: flex;
     align-items: center;
-    gap: 0;
     margin: 32px 0 0;
     background: var(--white);
     border-radius: 14px;
@@ -144,18 +137,16 @@
     transition: all 0.3s;
   }
   .step.active .step-num { background: var(--accent); color: white; }
-  .step.done .step-num { background: var(--navy); color: white; }
+  .step.done .step-num   { background: var(--navy); color: white; }
   .step.inactive .step-num { background: var(--light-blue); color: var(--gray); }
   .step-label { font-size: 13px; font-weight: 500; }
-  .step.active .step-label { color: var(--accent); }
-  .step.done .step-label { color: var(--navy); }
-  .step.inactive .step-label { color: var(--gray); }
+  .step.active .step-label  { color: var(--accent); }
+  .step.done .step-label    { color: var(--navy); }
+  .step.inactive .step-label{ color: var(--gray); }
   .step-connector {
-    width: 40px;
-    height: 2px;
+    width: 40px; height: 2px;
     background: var(--border);
-    flex-shrink: 0;
-    margin: 0 8px;
+    flex-shrink: 0; margin: 0 8px;
   }
   .step-connector.done { background: var(--navy); }
 
@@ -178,38 +169,25 @@
     gap: 14px;
   }
   .section-header-icon {
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     background: rgba(255,255,255,0.12);
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     font-size: 18px;
   }
   .section-header h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: white;
-    font-weight: 600;
+    font-size: 18px; color: white; font-weight: 600;
   }
-  .section-header p {
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-    margin-top: 2px;
-  }
+  .section-header p { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
 
   .section-body { padding: 32px; }
 
   /* ── SUB SECTIONS ── */
-  .subsection {
-    margin-bottom: 32px;
-  }
+  .subsection { margin-bottom: 32px; }
   .subsection-title {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
     color: var(--accent);
     padding-bottom: 10px;
     border-bottom: 2px solid var(--light-blue);
@@ -220,32 +198,31 @@
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 16px; margin-bottom: 16px;
   }
   .form-row.single { grid-template-columns: 1fr; }
-  .form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+  .form-row.three  { grid-template-columns: 1fr 1fr 1fr; }
 
   .form-group { display: flex; flex-direction: column; gap: 6px; }
   .form-group label {
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 12px; font-weight: 600;
     color: var(--gray);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    text-transform: uppercase; letter-spacing: 0.5px;
   }
   .form-group input,
   .form-group select,
   .form-group textarea {
     border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 14px;
+    border-radius: 8px; padding: 10px 14px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: var(--text);
+    font-size: 14px; color: var(--text);
     background: var(--white);
     transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
+    outline: none; width: 100%;
+  }
+  .form-group input[type="file"] {
+    padding: 8px 12px;
+    cursor: pointer;
   }
   .form-group input:focus,
   .form-group select:focus,
@@ -254,31 +231,20 @@
     box-shadow: 0 0 0 3px rgba(46,111,216,0.1);
   }
   .form-group select { appearance: none; cursor: pointer; }
+  .form-group small { color: var(--gray); font-size: 11px; }
 
-  /* ── RADIO / CHECKBOX CARDS ── */
-  .question-block {
-    margin-bottom: 20px;
-  }
+  /* ── OPTION CARDS ── */
+  .question-block { margin-bottom: 20px; }
   .question-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 14px; font-weight: 600;
+    color: var(--navy); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
   }
   .q-num {
-    width: 22px;
-    height: 22px;
-    background: var(--accent);
-    color: white;
-    border-radius: 50%;
-    font-size: 11px;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    width: 22px; height: 22px;
+    background: var(--accent); color: white;
+    border-radius: 50%; font-size: 11px; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
   .options-grid {
@@ -286,156 +252,114 @@
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 8px;
   }
-  .option-card {
-    position: relative;
-  }
+  .option-card { position: relative; }
   .option-card input[type="radio"],
   .option-card input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
+    position: absolute; opacity: 0; width: 0; height: 0;
   }
   .option-card label {
     display: block;
     border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--gray);
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-    background: var(--white);
-    user-select: none;
+    border-radius: 8px; padding: 10px 14px;
+    font-size: 13px; font-weight: 500;
+    color: var(--gray); cursor: pointer;
+    transition: all 0.2s; text-align: center;
+    background: var(--white); user-select: none;
   }
   .option-card input:checked + label {
     border-color: var(--accent);
     background: var(--light-blue);
-    color: var(--accent);
-    font-weight: 600;
+    color: var(--accent); font-weight: 600;
   }
   .option-card label:hover {
-    border-color: var(--accent);
-    background: var(--light-blue);
+    border-color: var(--accent); background: var(--light-blue);
   }
-
-  /* ── ADVISOR SECTION ── */
-  .advisor-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .advisor-card {
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .advisor-card.selected { border-color: var(--accent); background: var(--light-blue); }
-  .advisor-card .cat-name { font-weight: 700; font-size: 14px; color: var(--navy); }
-  .advisor-card .cat-sub { font-size: 11px; color: var(--gray); margin-top: 2px; }
 
   /* ── DISCLAIMER ── */
   .disclaimer {
     background: #FFF8EC;
     border: 1px solid #F0D98E;
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 12px;
-    color: #7A5C00;
-    margin-top: 24px;
-    line-height: 1.6;
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 12px; color: #7A5C00;
+    margin-top: 12px; line-height: 1.6;
+  }
+  .disclaimer-blue {
+    background: #EEF6FF;
+    border: 1px solid #BFD7FF;
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 12px; color: #1A4A8A;
+    margin-top: 12px; line-height: 1.6;
   }
 
-  /* ── NAVIGATION BUTTONS ── */
+  /* ── NAV BUTTONS ── */
   .form-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 32px;
-    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 32px; padding-top: 24px;
     border-top: 2px solid var(--light-blue);
   }
   .btn {
-    padding: 12px 32px;
-    border-radius: 8px;
+    padding: 12px 32px; border-radius: 8px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.3px;
+    font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 0.3px;
   }
   .btn-primary {
-    background: var(--accent);
-    color: white;
+    background: var(--accent); color: white;
     box-shadow: 0 4px 12px rgba(46,111,216,0.3);
   }
   .btn-primary:hover { background: var(--blue); transform: translateY(-1px); }
   .btn-secondary {
-    background: var(--light-blue);
-    color: var(--accent);
+    background: var(--light-blue); color: var(--accent);
     border: 1.5px solid var(--border);
   }
   .btn-secondary:hover { background: var(--border); }
   .btn-submit {
-    background: var(--navy);
-    color: white;
+    background: var(--navy); color: white;
     box-shadow: 0 4px 12px rgba(11,30,61,0.3);
-    padding: 14px 40px;
-    font-size: 15px;
+    padding: 14px 40px; font-size: 15px;
   }
   .btn-submit:hover { background: #071428; transform: translateY(-1px); }
 
-  /* ── SUCCESS STATE ── */
+  /* ── SUCCESS ── */
   .success-screen {
-    display: none;
-    text-align: center;
-    padding: 60px 32px;
+    text-align: center; padding: 60px 32px;
   }
-  .success-screen.show { display: block; }
   .success-icon {
-    width: 80px;
-    height: 80px;
+    width: 80px; height: 80px;
     background: linear-gradient(135deg, #2ECC71, #27AE60);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
-    margin: 0 auto 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px; margin: 0 auto 24px;
   }
   .success-screen h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    color: var(--navy);
-    margin-bottom: 12px;
+    font-size: 26px; color: var(--navy); margin-bottom: 12px;
   }
   .success-screen p { color: var(--gray); font-size: 15px; line-height: 1.7; }
+  .whatsapp-btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 13px 28px;
+    background: #25D366; color: white;
+    border-radius: 8px; text-decoration: none;
+    font-weight: 600; font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .whatsapp-btn:hover { background: #1ebe5a; transform: translateY(-1px); }
 
   /* ── FOOTER ── */
   .footer {
-    max-width: 860px;
-    margin: 32px auto 0;
-    padding: 0 16px;
-    text-align: center;
-    font-size: 11px;
-    color: var(--gray);
-    line-height: 1.8;
+    max-width: 860px; margin: 32px auto 0;
+    padding: 0 16px; text-align: center;
+    font-size: 11px; color: var(--gray); line-height: 1.8;
   }
 
   @media (max-width: 640px) {
     .header-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
     .header-contact { text-align: left; }
-    .form-row { grid-template-columns: 1fr; }
-    .form-row.three { grid-template-columns: 1fr 1fr; }
-    .advisor-grid { grid-template-columns: 1fr; }
+    .form-row, .form-row.three { grid-template-columns: 1fr; }
     .options-grid { grid-template-columns: 1fr 1fr; }
     .section-body { padding: 20px; }
     .progress-bar { padding: 16px 20px; }
@@ -445,16 +369,16 @@
 </head>
 <body>
 
-<!-- ONLY SHOWING MODIFIED PARTS CLEANLY INTEGRATED -->
-
-<!-- 🔥 LOGO CHANGE -->
-<div class="logo-area">
-  <img src="logo.png" style="width:52px;height:52px;border-radius:10px;">
-  <div class="logo-text">
-    <h1>IGRIS CAPITAL</h1>
-    <p>Clarity for Your Financial Decisions</p>
-  </div>
-</div>
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <img src="logo.png" alt="Igris Capital Logo">
+      <div class="logo-text">
+        <h1>IGRIS CAPITAL</h1>
+        <p>Clarity for Your Financial Decisions</p>
+      </div>
+    </div>
     <div class="header-contact">
       <p>Sole Proprietor: Joy Mendonsa</p>
       <p><a href="mailto:joy@igriscapital.in">joy@igriscapital.in</a> &nbsp;|&nbsp; +91 89287 93627</p>
@@ -479,16 +403,11 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════════
-       FORM START
-  ════════════════════════════════════ -->
   <form id="investorForm" action="https://formspree.io/f/xeeplzja" method="POST" enctype="multipart/form-data">
-
-    <!-- Hidden field to capture submission date -->
     <input type="hidden" name="_subject" value="New Igris Capital Investor Form Submission">
     <input type="hidden" name="submission_date" id="submission_date">
 
-    <!-- ══ SECTION 1 ══ -->
+    <!-- ══════════════ SECTION 1 ══════════════ -->
     <div class="section-card active" id="section-1">
       <div class="section-header">
         <div class="section-header-icon">📋</div>
@@ -499,13 +418,13 @@
       </div>
       <div class="section-body">
 
-        <!-- Personal Info -->
+        <!-- Personal Info — collected ONCE here -->
         <div class="subsection">
           <div class="subsection-title">Personal Information</div>
           <div class="form-row">
             <div class="form-group">
               <label>Full Name *</label>
-              <input type="text" name="full_name_s1" placeholder="Enter your full name" required>
+              <input type="text" name="full_name" id="full_name" placeholder="Enter your full name" required>
             </div>
             <div class="form-group">
               <label>Mobile No. *</label>
@@ -520,10 +439,7 @@
 
           <!-- Q1 -->
           <div class="question-block">
-            <div class="question-label">
-              <span class="q-num">1</span>
-              Primary Financial Goal
-            </div>
+            <div class="question-label"><span class="q-num">1</span> Primary Financial Goal</div>
             <div class="options-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
               <div class="option-card">
                 <input type="radio" name="financial_goal" id="goal-wc" value="Wealth Creation" required>
@@ -556,10 +472,7 @@
 
           <!-- Q2 -->
           <div class="question-block">
-            <div class="question-label">
-              <span class="q-num">2</span>
-              If your investment drops by 10%, you would
-            </div>
+            <div class="question-label"><span class="q-num">2</span> If your investment drops by 10%, you would</div>
             <div class="options-grid">
               <div class="option-card">
                 <input type="radio" name="drop_reaction" id="dr-1" value="Withdraw" required>
@@ -582,10 +495,7 @@
 
           <!-- Q3 -->
           <div class="question-block">
-            <div class="question-label">
-              <span class="q-num">3</span>
-              Investment Experience
-            </div>
+            <div class="question-label"><span class="q-num">3</span> Investment Experience</div>
             <div class="options-grid">
               <div class="option-card">
                 <input type="radio" name="investment_experience" id="exp-1" value="None" required>
@@ -608,10 +518,7 @@
 
           <!-- Q4 -->
           <div class="question-block">
-            <div class="question-label">
-              <span class="q-num">4</span>
-              Investment Horizon
-            </div>
+            <div class="question-label"><span class="q-num">4</span> Investment Horizon</div>
             <div class="options-grid">
               <div class="option-card">
                 <input type="radio" name="investment_horizon" id="hor-1" value="Less than 1 Year" required>
@@ -634,10 +541,7 @@
 
           <!-- Q5 -->
           <div class="question-block">
-            <div class="question-label">
-              <span class="q-num">5</span>
-              Emergency Fund Availability
-            </div>
+            <div class="question-label"><span class="q-num">5</span> Emergency Fund Availability</div>
             <div class="options-grid">
               <div class="option-card">
                 <input type="radio" name="emergency_fund" id="ef-1" value="No" required>
@@ -660,10 +564,7 @@
 
           <!-- Q6 -->
           <div class="question-block">
-            <div class="question-label">
-              <span class="q-num">6</span>
-              Expected Annual Return
-            </div>
+            <div class="question-label"><span class="q-num">6</span> Expected Annual Return</div>
             <div class="options-grid">
               <div class="option-card">
                 <input type="radio" name="expected_return" id="ret-1" value="6-7%" required>
@@ -686,10 +587,7 @@
 
           <!-- Q7 -->
           <div class="question-block">
-            <div class="question-label">
-              <span class="q-num">7</span>
-              Future SIP Increase Plan
-            </div>
+            <div class="question-label"><span class="q-num">7</span> Future SIP Increase Plan</div>
             <div class="options-grid" style="grid-template-columns: 1fr 1fr; max-width: 360px;">
               <div class="option-card">
                 <input type="radio" name="sip_increase" id="sip-yes" value="Yes (after 6-12 months)" required>
@@ -702,7 +600,6 @@
             </div>
           </div>
         </div>
-        
 
         <div class="form-nav">
           <span></span>
@@ -711,7 +608,7 @@
       </div>
     </div>
 
-    <!-- ══ SECTION 2 ══ -->
+    <!-- ══════════════ SECTION 2 ══════════════ -->
     <div class="section-card" id="section-2">
       <div class="section-header">
         <div class="section-header-icon">🪪</div>
@@ -722,19 +619,24 @@
       </div>
       <div class="section-body">
 
-        <!-- Personal Details -->
+        <!-- Personal Details — name pre-filled, not duplicated -->
         <div class="subsection">
           <div class="subsection-title">Personal Details</div>
           <div class="form-row single">
             <div class="form-group">
               <label>Full Name (as per PAN) *</label>
-              <input type="text" name="full_name_pan" placeholder="As it appears on your PAN card" required>
+              <!-- READ-ONLY mirror of Section 1 name -->
+              <input type="text" name="full_name_pan" id="full_name_pan"
+                     placeholder="Auto-filled from Section 1" readonly
+                     style="background:#F7F9FC; color:var(--gray); cursor:not-allowed;">
+              <small>Carried forward from your entry in Section 1</small>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>PAN Number *</label>
-              <input type="text" name="pan_number" placeholder="ABCDE1234F" maxlength="10" style="text-transform:uppercase" required>
+              <input type="text" name="pan_number" placeholder="ABCDE1234F"
+                     maxlength="10" style="text-transform:uppercase" required>
             </div>
             <div class="form-group">
               <label>Date of Birth *</label>
@@ -823,10 +725,11 @@
           <div class="form-row">
             <div class="form-group">
               <label>IFSC Code *</label>
-              <input type="text" name="ifsc_code" placeholder="e.g. HDFC0001234" maxlength="11" style="text-transform:uppercase" required>
+              <input type="text" name="ifsc_code" placeholder="e.g. HDFC0001234"
+                     maxlength="11" style="text-transform:uppercase" required>
             </div>
             <div class="form-group">
-              <label>Document Attached</label>
+              <label>Document to be Submitted</label>
               <select name="bank_document">
                 <option value="">-- Select --</option>
                 <option>Cancelled Cheque</option>
@@ -836,31 +739,26 @@
             </div>
           </div>
         </div>
+
+        <!-- Document Upload -->
         <div class="subsection">
-  <div class="subsection-title">Document Upload</div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label>Upload PAN Card *</label>
-      <input type="file" name="pan_upload" accept="image/*,application/pdf" required>
-      <small style="color:var(--gray); font-size:11px;">
-        JPG, PNG, PDF (Max 10MB)
-      </small>
-    </div>
-
-    <div class="form-group">
-      <label>Upload Bank Proof *</label>
-      <input type="file" name="bank_proof_upload" accept="image/*,application/pdf" required>
-      <small style="color:var(--gray); font-size:11px;">
-        Cancelled Cheque / Passbook
-      </small>
-    </div>
-  </div>
-
-  <div style="margin-top:10px;font-size:12px;color:var(--gray);">
-    📌 Upload clear images to avoid delays
-  </div>
-</div>
+          <div class="subsection-title">Document Upload</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Upload PAN Card *</label>
+              <input type="file" name="pan_upload" accept="image/*,application/pdf" required>
+              <small>JPG, PNG or PDF · Max 10 MB</small>
+            </div>
+            <div class="form-group">
+              <label>Upload Bank Proof *</label>
+              <input type="file" name="bank_proof_upload" accept="image/*,application/pdf" required>
+              <small>Cancelled Cheque or Passbook · Max 10 MB</small>
+            </div>
+          </div>
+          <div style="margin-top:6px; font-size:12px; color:var(--gray);">
+            📌 Please upload clear, readable images to avoid processing delays.
+          </div>
+        </div>
 
         <!-- Investment Details -->
         <div class="subsection">
@@ -877,7 +775,7 @@
             </div>
             <div class="form-group">
               <label>SIP Amount (₹)</label>
-              <input type="number" name="sip_amount_s2" placeholder="e.g. 5000">
+              <input type="number" name="sip_amount" placeholder="e.g. 5000" min="500">
             </div>
           </div>
           <div class="form-row">
@@ -901,7 +799,7 @@
           <div class="subsection-title">Nominee Details</div>
           <div class="form-row">
             <div class="form-group">
-              <label>Nominee Name *</label>
+              <label>Nominee Full Name *</label>
               <input type="text" name="nominee_name" placeholder="Full name of nominee" required>
             </div>
             <div class="form-group">
@@ -919,7 +817,22 @@
               <label>Nominee Date of Birth</label>
               <input type="date" name="nominee_dob">
             </div>
+            <div class="form-group">
+              <label>Nominee Mobile Number</label>
+              <input type="tel" name="nominee_mobile" placeholder="+91 XXXXX XXXXX">
+            </div>
           </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nominee Aadhaar (Last 4 digits)</label>
+              <input type="text" name="nominee_aadhaar_last4"
+                     placeholder="XXXX" maxlength="4"
+                     pattern="\d{4}" inputmode="numeric"
+                     title="Enter only the last 4 digits of Aadhaar">
+              <small>Only last 4 digits required — for identification only</small>
+            </div>
+          </div>
+        </div>
 
         <!-- Declaration -->
         <div class="subsection">
@@ -928,39 +841,48 @@
             I confirm that the information provided above is true and correct. I understand that mutual fund investments are subject to market risks and I have read all scheme-related documents carefully.
           </div>
           <div style="display:flex; align-items:flex-start; gap:10px;">
-            <input type="checkbox" id="declaration_check" name="declaration_agreed" value="Yes" required style="width:18px; height:18px; margin-top:2px; flex-shrink:0; accent-color:var(--accent);">
+            <input type="checkbox" id="declaration_check" name="declaration_agreed"
+                   value="Yes" required
+                   style="width:18px; height:18px; margin-top:2px; flex-shrink:0; accent-color:var(--accent);">
             <label for="declaration_check" style="font-size:13px; cursor:pointer; color:var(--text);">
               I agree to the above declaration and consent to Igris Capital processing my information for investment advisory purposes.
             </label>
           </div>
         </div>
 
-          <div class="disclaimer" style="background:#EEF6FF; border:1px solid #BFD7FF; color:#1A4A8A;">
-  🔒 <strong>Data Privacy:</strong> Your personal and financial information is kept strictly confidential and used only for KYC, onboarding, and investment processing.
-</div>
-
+        <div class="disclaimer-blue">
+          🔒 <strong>Data Privacy:</strong> Your personal and financial information is kept strictly confidential and used only for KYC, onboarding, and investment processing.
+        </div>
         <div class="disclaimer">
           ⚠️ <strong>Disclaimer:</strong> Mutual Fund investments are subject to market risks. Please read all scheme related documents carefully. Past performance is not indicative of future returns.
         </div>
 
         <div class="form-nav">
           <button type="button" class="btn btn-secondary" onclick="goToSection(1)">← Back</button>
-          <button type="submit" class="btn btn-submit">Submit Form ✓</button>
+          <button type="submit" class="btn btn-submit" id="submit-btn">Submit Form ✓</button>
         </div>
 
       </div>
     </div>
 
-    <!-- SUCCESS -->
-    <div class="section-card active" id="section-success" style="display:none;">
-      <div class="success-screen show">
+    <!-- ══ SUCCESS SCREEN ══ -->
+    <div class="section-card" id="section-success">
+      <div class="success-screen">
         <div class="success-icon">✓</div>
         <h2>Form Submitted Successfully!</h2>
         <p>Thank you for submitting your investor details.<br>
-        Joy from Igris Capital will review your information and get in touch with you shortly.</p>
-        <p style="margin-top:16px; font-size:13px;">
-          For any queries, reach out at <a href="mailto:joy@igriscapital.in" style="color:var(--accent);">joy@igriscapital.in</a> or <strong>+91 89287 93627</strong>
+           Joy from Igris Capital will review your information and get in touch shortly.</p>
+        <p style="margin-top:16px; font-size:13px; color:var(--gray);">
+          Questions? Reach us at
+          <a href="mailto:joy@igriscapital.in" style="color:var(--accent);">joy@igriscapital.in</a>
+          or <strong>+91 89287 93627</strong>
         </p>
+        <!-- WhatsApp button on success -->
+        <a id="whatsapp-link"
+           href="https://wa.me/918928793627?text=Hi%20Joy%2C%20I%20just%20submitted%20the%20Igris%20Capital%20investor%20form.%20Please%20confirm%20receipt."
+           class="whatsapp-btn" target="_blank">
+          💬 Message on WhatsApp
+        </a>
       </div>
     </div>
 
@@ -975,46 +897,51 @@
 </div>
 
 <script>
-  // Set submission date on load
+  // Set submission date
   document.getElementById('submission_date').value = new Date().toLocaleDateString('en-IN');
+
+  // Mirror full name from Section 1 → Section 2 (read-only)
+  document.getElementById('full_name').addEventListener('input', function () {
+    document.getElementById('full_name_pan').value = this.value;
+  });
 
   // Show "Other" goal field
   document.querySelectorAll('input[name="financial_goal"]').forEach(r => {
-    r.addEventListener('change', function() {
+    r.addEventListener('change', function () {
       document.getElementById('goal-other-wrap').style.display =
         this.value === 'Other' ? 'grid' : 'none';
     });
   });
 
-  // Navigate between sections
+  // ── Section navigation ──
   function goToSection(n) {
-    // Validate section 1 before proceeding
     if (n === 2) {
-      const s1Required = document.querySelectorAll('#section-1 input[required]');
+      // Validate section 1
       let valid = true;
-      s1Required.forEach(el => {
-        if (el.type === 'radio') {
-          const group = document.querySelectorAll(`input[name="${el.name}"]`);
-          const checked = Array.from(group).some(r => r.checked);
-          if (!checked) valid = false;
-        } else if (!el.value.trim()) {
-          el.style.borderColor = '#E74C3C';
-          valid = false;
-        }
+      const textRequired = document.querySelectorAll('#section-1 input[type="text"][required], #section-1 input[type="tel"][required]');
+      textRequired.forEach(el => {
+        if (!el.value.trim()) { el.style.borderColor = '#E74C3C'; valid = false; }
+      });
+      const radioGroups = ['financial_goal','drop_reaction','investment_experience','investment_horizon','emergency_fund','expected_return','sip_increase'];
+      radioGroups.forEach(name => {
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        if (!checked) valid = false;
       });
       if (!valid) {
-        alert('Please fill in all required fields and answer all questions before proceeding.');
+        alert('Please fill in your name, mobile number, and answer all 7 questions before proceeding.');
         return;
       }
+      // Mirror name
+      document.getElementById('full_name_pan').value = document.getElementById('full_name').value;
     }
 
     document.getElementById('section-1').style.display = n === 1 ? 'block' : 'none';
     document.getElementById('section-2').style.display = n === 2 ? 'block' : 'none';
+    document.getElementById('section-success').style.display = 'none';
 
     const step1 = document.getElementById('step-ind-1');
     const step2 = document.getElementById('step-ind-2');
     const conn1 = document.getElementById('conn-1');
-
     if (n === 1) {
       step1.className = 'step active';
       step2.className = 'step inactive';
@@ -1027,26 +954,28 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Handle form submission via Formspree AJAX
-  document.getElementById('investorForm').addEventListener('submit', async function(e) {
+  // ── Form submit via Formspree AJAX ──
+  document.getElementById('investorForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    const form = this;
-    const btn = form.querySelector('.btn-submit');
+    const btn = document.getElementById('submit-btn');
     btn.textContent = 'Submitting…';
     btn.disabled = true;
 
+    // Attach name to WhatsApp link
+    const clientName = document.getElementById('full_name').value;
+    const waLink = document.getElementById('whatsapp-link');
+    waLink.href = `https://wa.me/918928793627?text=Hi%20Joy%2C%20I%20am%20${encodeURIComponent(clientName)}%20and%20I%20just%20submitted%20the%20Igris%20Capital%20investor%20form.%20Please%20confirm%20receipt.`;
+
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch(this.action, {
         method: 'POST',
-        body: new FormData(form),
+        body: new FormData(this),
         headers: { 'Accept': 'application/json' }
       });
 
       if (res.ok) {
         document.getElementById('section-2').style.display = 'none';
-        const successCard = document.getElementById('section-success');
-        successCard.style.display = 'block';
-        // Update progress
+        document.getElementById('section-success').style.display = 'block';
         document.getElementById('step-ind-1').className = 'step done';
         document.getElementById('step-ind-2').className = 'step done';
         document.getElementById('conn-1').className = 'step-connector done';
@@ -1064,8 +993,8 @@
     }
   });
 
-  // Input styling reset on focus
-  document.querySelectorAll('input').forEach(el => {
+  // Reset error border on focus
+  document.querySelectorAll('input, select').forEach(el => {
     el.addEventListener('focus', () => el.style.borderColor = '');
   });
 </script>
