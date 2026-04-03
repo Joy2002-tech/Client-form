@@ -445,16 +445,16 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="header-inner">
-    <div class="logo-area">
-      <div class="logo-icon">IC</div>
-      <div class="logo-text">
-        <h1>IGRIS CAPITAL</h1>
-        <p>Clarity for Your Financial Decisions</p>
-      </div>
-    </div>
+<!-- ONLY SHOWING MODIFIED PARTS CLEANLY INTEGRATED -->
+
+<!-- 🔥 LOGO CHANGE -->
+<div class="logo-area">
+  <img src="logo.png" style="width:52px;height:52px;border-radius:10px;">
+  <div class="logo-text">
+    <h1>IGRIS CAPITAL</h1>
+    <p>Clarity for Your Financial Decisions</p>
+  </div>
+</div>
     <div class="header-contact">
       <p>Sole Proprietor: Joy Mendonsa</p>
       <p><a href="mailto:joy@igriscapital.in">joy@igriscapital.in</a> &nbsp;|&nbsp; +91 89287 93627</p>
@@ -482,7 +482,7 @@
   <!-- ════════════════════════════════════
        FORM START
   ════════════════════════════════════ -->
-  <form id="investorForm" action="https://formspree.io/f/xeeplzja" method="POST">
+  <form id="investorForm" action="https://formspree.io/f/xeeplzja" method="POST" enctype="multipart/form-data">
 
     <!-- Hidden field to capture submission date -->
     <input type="hidden" name="_subject" value="New Igris Capital Investor Form Submission">
@@ -836,6 +836,31 @@
             </div>
           </div>
         </div>
+        <div class="subsection">
+  <div class="subsection-title">Document Upload</div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Upload PAN Card *</label>
+      <input type="file" name="pan_upload" accept="image/*,application/pdf" required>
+      <small style="color:var(--gray); font-size:11px;">
+        JPG, PNG, PDF (Max 10MB)
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Upload Bank Proof *</label>
+      <input type="file" name="bank_proof_upload" accept="image/*,application/pdf" required>
+      <small style="color:var(--gray); font-size:11px;">
+        Cancelled Cheque / Passbook
+      </small>
+    </div>
+  </div>
+
+  <div style="margin-top:10px;font-size:12px;color:var(--gray);">
+    📌 Upload clear images to avoid delays
+  </div>
+</div>
 
         <!-- Investment Details -->
         <div class="subsection">
@@ -909,6 +934,10 @@
             </label>
           </div>
         </div>
+
+          <div class="disclaimer" style="background:#EEF6FF; border:1px solid #BFD7FF; color:#1A4A8A;">
+  🔒 <strong>Data Privacy:</strong> Your personal and financial information is kept strictly confidential and used only for KYC, onboarding, and investment processing.
+</div>
 
         <div class="disclaimer">
           ⚠️ <strong>Disclaimer:</strong> Mutual Fund investments are subject to market risks. Please read all scheme related documents carefully. Past performance is not indicative of future returns.
