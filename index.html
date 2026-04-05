@@ -373,7 +373,7 @@ a{text-decoration:none;color:inherit}
           <span></span>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
             <div id="nav-error-1" style="font-size:11px;color:#ef4444;display:none">⚠️ Please fill in your name, number, and answer all 7 questions above.</div>
-            <button type="button" class="btn btn-primary" id="btn-next-1">
+            <button type="button" class="btn btn-primary" id="btn-next-1" onclick="window.goToSection(2)">
               Next: KYC &amp; Registration
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
@@ -620,7 +620,7 @@ a{text-decoration:none;color:inherit}
         <div class="disc-risk">⚠️ <strong>Disclaimer:</strong> Mutual Fund investments are subject to market risks. Please read all scheme related documents carefully. Past performance is not indicative of future returns.</div>
 
         <div class="form-nav">
-          <button type="button" class="btn btn-secondary" id="btn-back-2">
+          <button type="button" class="btn btn-secondary" id="btn-back-2" onclick="window.goToSection(1)">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             Back
           </button>
@@ -667,8 +667,8 @@ a{text-decoration:none;color:inherit}
     });
   });
 
-  // Section navigation
-  function goToSection(n){
+  // Section navigation — assigned to window so Cloudflare email scripts can't break scope
+  window.goToSection = function goToSection(n){
     if(n === 2){
       let valid = true;
       let firstInvalid = null;
