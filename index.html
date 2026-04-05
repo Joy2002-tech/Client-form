@@ -214,6 +214,7 @@ a{text-decoration:none;color:inherit}
       <div class="stag">Secure Onboarding</div>
       <h1>Client Registration &amp; <em>Risk Profiling</em></h1>
       <p>Complete your investor profile and KYC details to get started. Your information is securely processed and used only for investment advisory purposes.</p>
+      <p style="font-size:12px;color:rgba(255,255,255,.5);margin-top:10px">⏱ Takes ~3–5 minutes to complete. After submission, onboarding will be processed within 24–48 hours.</p>
     </div>
     <div class="form-hero-right">
       <p>Sole Proprietor: Joy Mendonsa</p>
@@ -281,6 +282,8 @@ a{text-decoration:none;color:inherit}
         <!-- Risk Questionnaire -->
         <div class="subsection">
           <div class="sub-title">Risk Profiling Questionnaire</div>
+
+          <p style="font-size:12px;color:var(--txm);margin-bottom:16px;line-height:1.7;background:var(--accsub);border:1px solid rgba(26,82,204,.12);border-radius:var(--radius-sm);padding:11px 14px">💡 This helps us understand your risk level and recommend the right investment plan. There are no right or wrong answers — just choose what feels natural to you.</p>
 
           <!-- Q1 -->
           <div class="question-block">
@@ -368,10 +371,13 @@ a{text-decoration:none;color:inherit}
 
         <div class="form-nav">
           <span></span>
-          <button type="button" class="btn btn-primary" onclick="goToSection(2)">
-            Next: KYC &amp; Registration
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+            <div id="nav-error-1" style="font-size:11px;color:#ef4444;display:none">⚠️ Please fill in your name, number, and answer all 7 questions above.</div>
+            <button type="button" class="btn btn-primary" id="btn-next-1">
+              Next: KYC &amp; Registration
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -506,6 +512,7 @@ a{text-decoration:none;color:inherit}
         <!-- Document Upload -->
         <div class="subsection">
           <div class="sub-title">Document Upload</div>
+          <div class="disc-privacy" style="margin-bottom:16px">📌 These documents are required for SEBI-compliant KYC verification and secure investment processing. Your data is encrypted and never shared with third parties.</div>
           <div class="form-row three">
             <div class="form-group">
               <label>Upload PAN Card *</label>
@@ -518,9 +525,9 @@ a{text-decoration:none;color:inherit}
               <small>Cancelled Cheque or Passbook · Max 10 MB</small>
             </div>
             <div class="form-group">
-              <label>Upload Bank Statement *</label>
-              <input type="file" name="bank_statement_upload" accept="image/*,application/pdf" required>
-              <small>Last 3 months statement · Max 10 MB</small>
+              <label>Upload Bank Statement</label>
+              <input type="file" name="bank_statement_upload" accept="image/*,application/pdf">
+              <small>Optional now — may be requested later for faster verification</small>
             </div>
           </div>
           <div class="field-note">📌 Please upload clear, readable images to avoid processing delays.</div>
@@ -613,7 +620,7 @@ a{text-decoration:none;color:inherit}
         <div class="disc-risk">⚠️ <strong>Disclaimer:</strong> Mutual Fund investments are subject to market risks. Please read all scheme related documents carefully. Past performance is not indicative of future returns.</div>
 
         <div class="form-nav">
-          <button type="button" class="btn btn-secondary" onclick="goToSection(1)">
+          <button type="button" class="btn btn-secondary" id="btn-back-2">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             Back
           </button>
@@ -629,7 +636,7 @@ a{text-decoration:none;color:inherit}
         <h2>Form Submitted <em>Successfully!</em></h2>
         <div class="gline"></div>
         <p>Thank you for submitting your investor details.<br>Joy from Igris Capital will review your information and get in touch shortly.</p>
-        <p style="margin-top:12px;font-size:12.5px;color:var(--txf)">Questions? Write to <a href="mailto:hello@igriscapital.in" style="color:var(--acc)">hello@igriscapital.in</a> or call <strong style="color:var(--txt)">+91 89287 93627</strong></p>
+        <p style="margin-top:12px;font-size:12.5px;color:var(--txf)">Questions? Write to <a href="/cdn-cgi/l/email-protection#731b161f1f1c331a14011a001012031a07121f5d1a1d" style="color:var(--acc)"><span class="__cf_email__" data-cfemail="6c04090000032c050b1e051f0f0d1c05180d00420502">[email&#160;protected]</span></a> or call <strong style="color:var(--txt)">+91 89287 93627</strong></p>
         <a href="https://igriscapital.in" class="back-link" style="margin-top:24px;display:inline-flex">← Back to main website</a>
       </div>
     </div>
@@ -644,7 +651,7 @@ a{text-decoration:none;color:inherit}
   <p style="margin-top:6px;color:rgba(232,240,255,.22)"><em>Mutual Fund investments are subject to market risks. Please read all scheme related documents carefully before investing.</em></p>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Set submission date
   document.getElementById('submission_date').value = new Date().toLocaleDateString('en-IN');
 
@@ -664,15 +671,46 @@ a{text-decoration:none;color:inherit}
   function goToSection(n){
     if(n === 2){
       let valid = true;
+      let firstInvalid = null;
+
+      // Check required text/tel fields
       document.querySelectorAll('#section-1 input[type="text"][required], #section-1 input[type="tel"][required]').forEach(el=>{
-        if(!el.value.trim()){el.style.borderColor='#ef4444';valid=false;}
-        else el.style.borderColor='';
+        if(!el.value.trim()){
+          el.style.borderColor='#ef4444';
+          el.style.boxShadow='0 0 0 3px rgba(239,68,68,.1)';
+          if(!firstInvalid) firstInvalid = el;
+          valid=false;
+        } else {
+          el.style.borderColor='';
+          el.style.boxShadow='';
+        }
       });
+
+      // Check radio groups — highlight parent block if unanswered
       const radioGroups=['financial_goal','drop_reaction','investment_experience','investment_horizon','emergency_fund','expected_return','sip_increase'];
       radioGroups.forEach(name=>{
-        if(!document.querySelector(`input[name="${name}"]:checked`)) valid=false;
+        if(!document.querySelector(`input[name="${name}"]:checked`)){
+          valid=false;
+          const el = document.querySelector(`input[name="${name}"]`);
+          if(el && !firstInvalid){
+            firstInvalid = el.closest('.question-block');
+          }
+          if(el){
+            el.closest('.options-grid').style.outline='2px solid #ef4444';
+            el.closest('.options-grid').style.borderRadius='8px';
+          }
+        } else {
+          const el = document.querySelector(`input[name="${name}"]`);
+          if(el) el.closest('.options-grid').style.outline='none';
+        }
       });
-      if(!valid){alert('Please fill in your name, mobile number, and answer all 7 questions before proceeding.');return;}
+
+      if(!valid){
+        document.getElementById('nav-error-1').style.display = 'block';
+        if(firstInvalid) firstInvalid.scrollIntoView({behavior:'smooth',block:'center'});
+        return;
+      }
+      document.getElementById('nav-error-1').style.display = 'none';
       document.getElementById('full_name_pan').value = document.getElementById('full_name').value;
     }
 
@@ -694,6 +732,10 @@ a{text-decoration:none;color:inherit}
   // Make section-1 active on load
   document.getElementById('section-1').classList.add('active');
 
+  // Wire navigation buttons via addEventListener (safer than onclick attributes)
+  document.getElementById('btn-next-1').addEventListener('click', function(){ goToSection(2); });
+  document.getElementById('btn-back-2').addEventListener('click', function(){ goToSection(1); });
+
   // Form submit via Formspree AJAX
   document.getElementById('investorForm').addEventListener('submit', async function(e){
     e.preventDefault();
@@ -705,9 +747,4 @@ a{text-decoration:none;color:inherit}
       if(res.ok){
         document.getElementById('section-2').style.display='none';
         document.getElementById('section-success').style.display='block';
-        document.getElementById('step-ind-1').className='prog-step done';
-        document.getElementById('step-ind-2').className='prog-step done';
-        document.getElementById('conn-1').className='prog-connector done';
-        window.scrollTo({top:0,behavior:'smooth'});
-      } else {
-        const data=await
+        document.getElementById('step-ind-1').className='prog-step d
